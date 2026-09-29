@@ -15,15 +15,15 @@ function dadosIniciais() {
       { id: 3, nome: "Visitante", email: "visitante@stocktech.com", senha: "admin123", perfil: "visitante" }
     ],
     categorias: [
-      { id: 1, nome: "Eletrônicos", descricao: "Periféricos e acessórios" },
-      { id: 2, nome: "Alimentos", descricao: "Produtos alimentícios" },
-      { id: 3, nome: "Limpeza", descricao: "Produtos de limpeza" }
+      { id: 1, Nome:"Eletrônicos", Descricao: "Periféricos e acessórios" },
+      { id: 2, Nome:"Alimentos", Descricao: "Produtos alimentícios" },
+      { id: 3, Nome: "Limpeza", Descricao: "Produtos de limpeza" }
     ],
     produtos: [
-      { id: 1, nome: "Mouse sem fio", codigo: "ELE001", marca: "Logitech", descricao: "", preco: 59.9, quantidade: 25, estoque_minimo: 5, categoria_id: 1 },
-      { id: 2, nome: "Teclado USB", codigo: "ELE002", marca: "Multilaser", descricao: "", preco: 45, quantidade: 3, estoque_minimo: 5, categoria_id: 1 },
-      { id: 3, nome: "Arroz 5kg", codigo: "ALI001", marca: "Tio João", descricao: "", preco: 28.5, quantidade: 40, estoque_minimo: 10, categoria_id: 2 },
-      { id: 4, nome: "Detergente 500ml", codigo: "LIM001", marca: "Ypê", descricao: "", preco: 2.99, quantidade: 0, estoque_minimo: 10, categoria_id: 3 }
+      { id: 1, Nome: "Mouse sem fio", Codigo: "ELE001", Marca: "Logitech", Descricao: "", Preco Unit: 59.9, Quantidade: 25, Estoque_Minimo: 5, Categoria_id: 1 },
+      { id: 2, Nome: "Teclado USB", Codigo: "ELE002", Marca: "Multilaser", Descricao: "", Preco Unit: 45, Quantidade: 3, Estoque_Minimo: 5, Categoria_id: 1 },
+      { id: 3, Nome: "Arroz 5kg", Codigo: "ALI001", Marca: "Tio João", Descricao: "", Preco Unit: 28.5, Quantidade: 40, Estoque_Minimo: 10, Categoria_id: 2 },
+      { id: 4, Nome: "Detergente 500ml", Codigo: "LIM001", Marca: "Ypê", Descricao: "", Preco Unit: 2.99, Quantidade: 0, Estoque_Minimo: 10, Categoria_id: 3 }
     ],
     movimentacoes: []
   };
