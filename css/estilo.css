@@ -1,69 +1,81 @@
-/* StockTech — versão HTML/CSS/JS */
-* { box-sizing: border-box; }
-body { margin: 0; font-family: "Segoe UI", Arial, sans-serif; background: #f1f5f9; color: #1e293b; }
-h1, h2, h3 { margin-top: 0; }
-.oculto { display: none !important; }
+/* =========================================================
+   STOCKTECH — Layout profissional / responsivo
+   Mantém as classes e funções da versão original.
+   ========================================================= */
+*{box-sizing:border-box}
+:root{--primary:#2563eb;--primary-dark:#1d4ed8;--sidebar:#0f172a;--sidebar-2:#111c33;--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#64748b;--border:#e5e7eb;--green:#16a34a;--yellow:#d97706;--red:#dc2626}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
+h1,h2,h3{margin-top:0}.oculto{display:none!important}
+button,input,select,textarea{font:inherit}
 
-/* Login */
-.login { min-height: 100vh; display: flex; align-items: center; justify-content: center; background: linear-gradient(135deg, #0f766e, #0e7490); padding: 16px; }
-.login-caixa { width: 100%; max-width: 380px; }
-.sub { color: #64748b; margin-top: -8px; }
-.dica { display: block; margin-top: 12px; color: #64748b; }
+/* LOGIN */
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 20% 20%,#3b82f6 0,#1e40af 34%,#0f172a 100%)}
+.login:before{content:"";position:fixed;width:360px;height:360px;border:1px solid rgba(255,255,255,.12);border-radius:50%;top:-140px;right:-100px}
+.login-caixa{width:100%;max-width:420px;padding:36px!important;border:1px solid rgba(255,255,255,.15)!important;background:rgba(255,255,255,.97)!important;box-shadow:0 25px 70px rgba(0,0,0,.25)!important;border-radius:22px!important}
+.login-caixa h1{text-align:center;font-size:30px;margin-bottom:6px}.login-caixa h1:first-letter{font-size:28px}
+.sub{text-align:center;color:var(--muted);margin:0 0 28px}
+.dica{display:block;margin-top:16px;color:#94a3b8;font-size:12px;line-height:1.5;text-align:center}
 
-/* Topo e menu */
-.topo { background: #0f766e; color: #fff; padding: 12px 20px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
-.topo nav { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
-.topo a { color: #fff; text-decoration: none; opacity: .9; }
-.topo a:hover, .topo a.ativo { opacity: 1; text-decoration: underline; }
-#usuario-logado { font-size: 13px; background: rgba(255,255,255,.15); padding: 4px 10px; border-radius: 20px; }
-.btn-menu { display: none; background: none; border: 0; color: #fff; font-size: 24px; cursor: pointer; }
+/* SISTEMA / SIDEBAR */
+#sistema{min-height:100vh}
+.topo{position:fixed;z-index:20;left:0;top:0;width:250px;height:100vh;background:linear-gradient(180deg,var(--sidebar),var(--sidebar-2));color:#fff;padding:24px 16px;display:flex;flex-direction:column;justify-content:flex-start;gap:28px;box-shadow:5px 0 25px rgba(15,23,42,.12)}
+.topo>strong{font-size:23px;padding:0 10px;letter-spacing:-.5px}
+.topo>strong:after{content:"GERENCIAMENTO DE ESTOQUE";display:block;font-size:9px;font-weight:500;letter-spacing:1.2px;color:#94a3b8;margin-top:5px}
+.topo nav{display:flex;flex-direction:column;gap:5px;align-items:stretch;flex:1}
+.topo nav a{color:#cbd5e1;text-decoration:none;padding:12px 13px;border-radius:10px;transition:.2s;font-size:14px}
+.topo nav a:before{margin-right:10px;opacity:.9}
+.topo nav a[href="#painel"]:before{content:"▦"}.topo nav a[href="#produtos"]:before{content:"▣"}.topo nav a[href="#categorias"]:before{content:"◈"}.topo nav a[href="#movimentar"]:before{content:"↕"}.topo nav a[href="#historico"]:before{content:"◷"}.topo nav a[href="#relatorios"]:before{content:"▥"}
+.topo a:hover,.topo a.ativo{background:rgba(37,99,235,.22);color:#fff;text-decoration:none}
+#usuario-logado{font-size:12px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.08);padding:10px 12px;border-radius:10px;color:#cbd5e1;order:9}
+#btn-sair{margin-top:auto;color:#fca5a5!important;background:rgba(220,38,38,.08)}
+#btn-sair:hover{background:rgba(220,38,38,.18)!important}
+.btn-menu{display:none;background:none;border:0;color:#fff;font-size:24px;cursor:pointer}
 
-main { max-width: 1100px; margin: 0 auto; padding: 20px; }
+main{max-width:none;margin:0 0 0 250px;padding:36px 42px;min-height:100vh}
+main>h2{font-size:27px;letter-spacing:-.5px;margin:0 0 24px}main>h2:after{content:"";display:block;width:38px;height:3px;background:var(--primary);border-radius:4px;margin-top:8px}
 
-/* Componentes */
-.cartao { background: #fff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,.04); }
-label { display: block; margin-bottom: 12px; font-size: 14px; font-weight: 600; }
-input, select, textarea { width: 100%; padding: 9px 10px; margin-top: 4px; border: 1px solid #cbd5e1; border-radius: 8px; font: inherit; }
-.btn { background: #0f766e; color: #fff; border: 0; padding: 9px 16px; border-radius: 8px; cursor: pointer; font: inherit; text-decoration: none; display: inline-block; }
-.btn:hover { background: #115e59; }
-.btn.perigo { background: #dc2626; }
-.btn.claro { background: #e2e8f0; color: #1e293b; }
-.btn.peq { padding: 5px 10px; font-size: 13px; }
-.alerta { padding: 10px 14px; border-radius: 8px; margin: 0 auto 16px; max-width: 1060px; }
-#mensagem .alerta { margin-top: 16px; }
-.sucesso { background: #dcfce7; color: #166534; }
-.erro { background: #fee2e2; color: #991b1b; }
+/* COMPONENTES */
+.cartao{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:20px;box-shadow:0 5px 20px rgba(15,23,42,.045)}
+label{display:block;margin-bottom:13px;font-size:13px;font-weight:700;color:#334155}
+input,select,textarea{width:100%;padding:11px 12px;margin-top:6px;border:1px solid #d7dce5;border-radius:9px;background:#fff;color:var(--text);outline:none;transition:.15s}
+input:focus,select:focus,textarea:focus{border-color:#60a5fa;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+textarea{min-height:90px;resize:vertical}
+.btn{background:var(--primary);color:#fff;border:0;padding:10px 16px;border-radius:9px;cursor:pointer;font:inherit;text-decoration:none;display:inline-block;font-weight:700;transition:.15s;box-shadow:0 2px 5px rgba(37,99,235,.15)}
+.btn:hover{background:var(--primary-dark);transform:translateY(-1px)}
+.btn.perigo{background:var(--red)}.btn.claro{background:#eef2f7;color:#334155;box-shadow:none}.btn.peq{padding:6px 10px;font-size:12px}
+.alerta{padding:12px 16px;border-radius:10px;margin:0 auto 16px;max-width:calc(100% - 40px);box-shadow:0 5px 15px rgba(0,0,0,.05)}#mensagem .alerta{margin-top:16px;margin-left:calc(250px + 20px);margin-right:20px}.sucesso{background:#dcfce7;color:#166534}.erro{background:#fee2e2;color:#991b1b}
 
-.grade { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; margin-bottom: 20px; }
-.indicador { background: #fff; border-radius: 12px; padding: 16px; border-left: 5px solid #0f766e; }
-.indicador span { font-size: 13px; color: #64748b; }
-.indicador strong { display: block; font-size: 26px; }
-.indicador.amarelo { border-color: #eab308; }
-.indicador.vermelho { border-color: #dc2626; }
+/* CARDS DO PAINEL */
+.grade{display:grid;grid-template-columns:repeat(5,minmax(150px,1fr));gap:15px;margin-bottom:22px}
+.indicador{background:#fff;border:1px solid var(--border);border-radius:15px;padding:18px;position:relative;overflow:hidden;box-shadow:0 5px 18px rgba(15,23,42,.04);border-left:4px solid var(--primary)}
+.indicador:after{content:"";position:absolute;width:55px;height:55px;border-radius:50%;background:rgba(37,99,235,.07);right:-17px;bottom:-17px}
+.indicador span{font-size:12px;color:var(--muted);font-weight:600}.indicador strong{display:block;font-size:28px;margin-top:8px;color:#0f172a}.indicador.amarelo{border-left-color:#f59e0b}.indicador.vermelho{border-left-color:var(--red)}
 
-.form-linha { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 0 14px; }
-.filtros { display: flex; gap: 10px; flex-wrap: wrap; align-items: end; }
-.filtros label { flex: 1; min-width: 150px; margin: 0; }
+.form-linha{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 15px}.filtros{display:flex;gap:12px;flex-wrap:wrap;align-items:end}.filtros label{flex:1;min-width:180px;margin:0}
+.tabela{overflow-x:auto}table{width:100%;border-collapse:separate;border-spacing:0;font-size:13px}th,td{padding:13px 12px;border-bottom:1px solid #edf0f4;text-align:left;white-space:nowrap}th{background:#f8fafc;color:#64748b;font-size:11px;text-transform:uppercase;letter-spacing:.4px}tr:last-child td{border-bottom:0}tbody tr:hover,table tr:hover td{background:#fafcff}
+.etiqueta{padding:5px 10px;border-radius:999px;font-size:11px;font-weight:800;white-space:nowrap}.etiqueta.normal,.etiqueta.entrada{background:#dcfce7;color:#166534}.etiqueta.baixo{background:#fef3c7;color:#92400e}.etiqueta.esgotado,.etiqueta.saida{background:#fee2e2;color:#991b1b}.acoes{display:flex;gap:6px}.total-estoque{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:14px;padding:13px 15px;background:#f8fafc;border:1px solid var(--border);border-radius:10px;color:#475569;font-size:13px}.total-estoque strong{font-size:17px;color:#0f172a}
 
-.tabela { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-size: 14px; }
-th, td { padding: 10px; border-bottom: 1px solid #e2e8f0; text-align: left; }
-th { background: #f8fafc; }
-.etiqueta { padding: 3px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; white-space: nowrap; }
-.etiqueta.normal, .etiqueta.entrada { background: #dcfce7; color: #166534; }
-.etiqueta.baixo { background: #fef9c3; color: #854d0e; }
-.etiqueta.esgotado, .etiqueta.saida { background: #fee2e2; color: #991b1b; }
-.acoes { display: flex; gap: 6px; }
+/* mensagens/títulos internos gerados pelo JS */
+#conteudo p{color:var(--muted)}#conteudo h3{font-size:17px}
+#contador{font-size:12px!important;margin:0 0 12px;font-weight:600}
 
-/* Celular */
-@media (max-width: 760px) {
-  .btn-menu { display: block; }
-  .topo nav { display: none; width: 100%; flex-direction: column; align-items: flex-start; }
-  .topo nav.aberto { display: flex; }
+@media(max-width:1100px){.grade{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){
+ .topo{position:sticky;top:0;width:100%;height:auto;min-height:64px;padding:13px 16px;display:flex;flex-direction:row;align-items:center;gap:8px;box-shadow:0 3px 15px rgba(15,23,42,.15)}
+ .topo>strong{font-size:20px;padding:0;flex:1}.topo>strong:after{display:none}.btn-menu{display:block}.topo nav{display:none;position:absolute;left:0;right:0;top:64px;background:var(--sidebar);padding:10px 16px 16px;gap:4px;box-shadow:0 10px 20px rgba(0,0,0,.15)}.topo nav.aberto{display:flex}.topo nav a{padding:11px}.topo nav #usuario-logado{order:0;margin-top:6px}
+ main{margin:0;padding:24px 16px}.grade{grid-template-columns:repeat(2,1fr)}#mensagem .alerta{margin-left:20px;margin-right:20px}.login-caixa{padding:28px!important}
 }
+@media(max-width:430px){.grade{grid-template-columns:1fr 1fr}.indicador{padding:14px}.indicador strong{font-size:23px}.cartao{padding:17px}main>h2{font-size:23px}}
 
-/* Impressão dos relatórios */
-@media print {
-  .topo, .nao-imprimir, #mensagem { display: none !important; }
-  body { background: #fff; }
+@media print{.topo,.nao-imprimir,#mensagem{display:none!important}body{background:#fff}main{margin:0;padding:20px}.cartao{box-shadow:none}}
+
+/* LOGO STOCKTECH */
+.logo-login{display:block;width:min(100%,330px);height:auto;margin:0 auto 8px;object-fit:contain}
+.marca{display:flex!important;align-items:center;gap:8px;padding:0 4px!important}
+.marca img{width:48px;height:42px;object-fit:contain;object-position:center}
+.marca span{font-size:22px;letter-spacing:-.6px}
+@media(max-width:760px){
+  .marca img{width:38px;height:34px}
+  .marca span{font-size:20px}
 }

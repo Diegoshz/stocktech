@@ -113,17 +113,19 @@ function tabelaProdutos(lista, comAcoes = true) {
   if (!lista.length) return "<p>Nenhum produto encontrado.</p>";
   const editar = comAcoes && pode("administrador", "funcionario");
   const excluir = comAcoes && pode("administrador");
+  const valorTotalLista = lista.reduce((s, x) => s + (Number(x.preco) || 0) * (Number(x.quantidade) || 0), 0);
   return `<div class="tabela"><table>
-    <tr><th>Código</th><th>Nome</th><th>Categoria</th><th>Marca</th><th>Preço</th><th>Qtd.</th><th>Situação</th>${editar ? "<th>Ações</th>" : ""}</tr>
+    <tr><th>Código</th><th>Nome</th><th>Categoria</th><th>Marca</th><th>Preço unitário</th><th>Qtd.</th><th>Preço total</th><th>Situação</th>${editar ? "<th>Ações</th>" : ""}</tr>
     ${lista.map(x => {
       const s = situacao(x);
       return `<tr><td>${esc(x.codigo)}</td><td>${esc(x.nome)}</td><td>${esc(nomeCategoria(x.categoria_id))}</td>
         <td>${esc(x.marca)}</td><td>${dinheiro(x.preco)}</td><td>${x.quantidade}</td>
+        <td>${dinheiro((Number(x.preco) || 0) * (Number(x.quantidade) || 0))}</td>
         <td><span class="etiqueta ${s.classe}">${s.texto}</span></td>
         ${editar ? `<td class="acoes"><button class="btn peq claro" onclick="formProduto(${x.id})">Editar</button>
           ${excluir ? `<button class="btn peq perigo" onclick="excluirProduto(${x.id})">Excluir</button>` : ""}</td>` : ""}</tr>`;
     }).join("")}
-  </table></div>`;
+  </table></div><div class="total-estoque"><span>Valor total dos produtos exibidos:</span><strong>${dinheiro(valorTotalLista)}</strong></div>`;
 }
 
 function telaProdutos() {
@@ -166,7 +168,7 @@ function formProduto(id) {
         <label>Código * <input name="codigo" required value="${esc(p.codigo)}"></label>
         <label>Marca <input name="marca" value="${esc(p.marca)}"></label>
         <label>Categoria <select name="categoria_id"><option value="">Sem categoria</option>${opcoesCat}</select></label>
-        <label>Preço (R$) * <input name="preco" type="number" step="0.01" min="0" required value="${p.preco}"></label>
+        <label>Preço unitário (R$) * <input name="preco" type="number" step="0.01" min="0" required value="${p.preco}"></label>
         <label>Estoque mínimo * <input name="estoque_minimo" type="number" min="0" required value="${p.estoque_minimo}"></label>
         ${id ? "" : `<label>Quantidade inicial <input name="quantidade" type="number" min="0" value="0"></label>`}
       </div>
