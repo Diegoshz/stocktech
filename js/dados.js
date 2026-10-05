@@ -20,10 +20,10 @@ function dadosIniciais() {
       { id: 3, Nome: "Limpeza", Descricao: "Produtos de limpeza" }
     ],
     produtos: [
-      { id: 1, Nome: "Mouse sem fio", Codigo: "ELE001", Marca: "Logitech", Descricao: "", Preco Unit: 59.9, Quantidade: 25, Estoque_Minimo: 5, Categoria_id: 1 },
-      { id: 2, Nome: "Teclado USB", Codigo: "ELE002", Marca: "Multilaser", Descricao: "", Preco Unit: 45, Quantidade: 3, Estoque_Minimo: 5, Categoria_id: 1 },
-      { id: 3, Nome: "Arroz 5kg", Codigo: "ALI001", Marca: "Tio João", Descricao: "", Preco Unit: 28.5, Quantidade: 40, Estoque_Minimo: 10, Categoria_id: 2 },
-      { id: 4, Nome: "Detergente 500ml", Codigo: "LIM001", Marca: "Ypê", Descricao: "", Preco Unit: 2.99, Quantidade: 0, Estoque_Minimo: 10, Categoria_id: 3 }
+      { id: 1, Nome: "Mouse sem fio", Codigo: "ELE001", Marca: "Logitech", Descricao: "", Preco_Unit: 59.9, Quantidade: 25, Estoque_Minimo: 5, Categoria_id: 1 },
+      { id: 2, Nome: "Teclado USB", Codigo: "ELE002", Marca: "Multilaser", Descricao: "", Preco_Unit: 45, Quantidade: 3, Estoque_Minimo: 5, Categoria_id: 1 },
+      { id: 3, Nome: "Arroz 5kg", Codigo: "ALI001", Marca: "Tio João", Descricao: "", Preco_Unit: 28.5, Quantidade: 40, Estoque_Minimo: 10, Categoria_id: 2 },
+      { id: 4, Nome: "Detergente 500ml", Codigo: "LIM001", Marca: "Ypê", Descricao: "", Preco_Unit: 2.99, Quantidade: 0, Estoque_Minimo: 10, Categoria_id: 3 }
     ],
     movimentacoes: []
   };
